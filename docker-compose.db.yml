@@ -1,0 +1,16 @@
+version: '3.9'
+
+services:
+  db_dev:
+    image: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=welcome
+    volumes:
+      - mango-data:/data/db
+    ports:
+      - "27017:27017"
+
+volumes:
+  mango-data:

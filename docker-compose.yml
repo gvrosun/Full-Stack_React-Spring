@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  frontend:
+    build:
+      context: ./front
+    ports:
+      - "80:80"
+    depends_on:
+      - server
+  
+  server:
+    restart: always
+    build:
+      context: ./server
+    depends_on:
+      - db
+
+  db:
+    image: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=welcome
+    volumes:
+      - mango-data:/data/db
+
+volumes:
+  mango-data:
