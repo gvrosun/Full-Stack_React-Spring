@@ -70,7 +70,6 @@ public class MongoConnection {
 	    	ArrayList<String> result = new ArrayList<String>();
 	    	try {
 	            while(cursor.hasNext()) {
-	                System.out.println(cursor.next().toJson());
 	                result.add(cursor.next().toJson());
 	            }
 	        } finally {

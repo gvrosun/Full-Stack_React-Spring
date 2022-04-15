@@ -1,15 +1,21 @@
+import DisplayServers from "./components/DisplayServers";
+import AddServer from "./components/AddServer";
+import HomePage from "./components/HomePage";
 import { useState } from "react";
 
 function App() {
-  const [name, setName] = useState([]);
-  fetch("http://localhost:8080/getAllServers")
-    .then((response) => response.json())
-    .then((data) => setName(data.map((item) => JSON.parse(item))));
+  const [servers, addServers] = useState({});
+  const serverHandler = (server) => {
+    console.log(servers);
+    console.log(server);
+    addServers({ ...servers, server });
+    console.log(servers);
+  };
   return (
     <div>
-      {name.map((item) => (
-        <p key={item.id}> {item.name} </p>
-      ))}
+      {/* <DisplayServers onFetchServers={serverHandler} />
+      <AddServer onNewServer={serverHandler} /> */}
+      <HomePage />
     </div>
   );
 }
